@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate instead of useHistory
 
-const Signup = () => {
+const Signup = (props) => {
 
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
   const navigate = useNavigate(); // Use useNavigate instead of useHistory
@@ -22,9 +22,10 @@ const Signup = () => {
       // Save the auth token and redirect
       localStorage.setItem('token', json.authtoken);
       navigate("/"); // Use navigate function instead of history.push
+      props.showAlert("Account Created Successfully!", "success");
     }
     else {
-      alert("Invalid credentials");
+      props.showAlert("Invalid credentials!", "danger");
     }
   }
 

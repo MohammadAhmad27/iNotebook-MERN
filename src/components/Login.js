@@ -20,9 +20,11 @@ const Login = (props) => {
             // Save the auth token and redirect
             localStorage.setItem('token', json.authtoken);
             navigate("/"); // Use navigate function instead of history.push
+            props.showAlert("Logged in Successfully!", "success");
         }
         else {
-            alert("Invalid credentials");
+            props.showAlert("Invalid Details!", "danger");
+
         }
     }
 
