@@ -19,8 +19,9 @@ const Login = (props) => {
         if (json.success) {
             // Save the auth token and redirect
             localStorage.setItem('token', json.authtoken);
-            navigate("/"); // Use navigate function instead of history.push
             props.showAlert("Logged in Successfully!", "success");
+            navigate("/"); // Use navigate function instead of history.push
+           
         }
         else {
             props.showAlert("Invalid Details!", "danger");
