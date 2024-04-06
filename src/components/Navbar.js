@@ -3,10 +3,11 @@ import { Link, useLocation, useNavigate  } from "react-router-dom";
 
 
 
-const Navbar = () => {
+const Navbar = (props) => {
     const navigate = useNavigate();
     const handleLogout = () => {
         localStorage.removeItem('token');
+        props.showAlert("Logged out Successfully!", "success");
        navigate("/login");
     }
     let location = useLocation();
