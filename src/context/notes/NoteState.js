@@ -16,8 +16,8 @@ const NoteState = (props) => {
         "auth-token": localStorage.getItem('token')
       }
     });
-    const json = await response.json() 
-    console.log(json);
+    const json = await response.json()
+    console.log("All Notes", json);
     setNotes(json)
   }
 
@@ -31,10 +31,11 @@ const NoteState = (props) => {
         'Content-Type': 'application/json',
         "auth-token": localStorage.getItem('token')
       },
-      body: JSON.stringify({title, description})
+      body: JSON.stringify({ title, description })
     });
 
     const note = await response.json();
+    console.log("New Note", note);
     setNotes(notes.concat(note))
   }
 
@@ -48,8 +49,8 @@ const NoteState = (props) => {
         "auth-token": localStorage.getItem('token')
       }
     });
-    const json = response.json(); 
-    console.log(json);
+    const json = response.json();
+    console.log("Deleted Note", json);
     const newNotes = notes.filter((note) => { return note._id !== id })
     setNotes(newNotes)
   }
@@ -63,20 +64,20 @@ const NoteState = (props) => {
         'Content-Type': 'application/json',
         "auth-token": localStorage.getItem('token')
       },
-      body: JSON.stringify({title, description})
+      body: JSON.stringify({ title, description })
     });
-    const json = await response.json(); 
-    console.log(json);
-     let newNotes = JSON.parse(JSON.stringify(notes))
+    const json = await response.json();
+    console.log("Edited Note", json);
+    let newNotes = JSON.parse(JSON.stringify(notes))
     // Logic to edit in client
     for (let index = 0; index < newNotes.length; index++) {
       const element = newNotes[index];
       if (element._id === id) {
         newNotes[index].title = title;
         newNotes[index].description = description;
-        break; 
+        break;
       }
-    }  
+    }
     setNotes(newNotes);
   }
 
