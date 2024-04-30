@@ -105,7 +105,7 @@ router.post('/getuser', fetchUser, async (req, res) => {
 
   try {
     let userId = req.user.id;
-    const user = await User.findById(userId).select("-password")
+    const user = await User.findById(userId).select("-password") // .select("-password") By doing this it won't send password in response.
     res.send(user)
   } catch (error) {
     console.error(error.message);
