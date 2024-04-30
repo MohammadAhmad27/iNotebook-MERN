@@ -19,13 +19,13 @@ router.post('/createuser', [
   // If there are errors, return Bad request and the errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({success, errors: errors.array() });
+    return res.status(400).json({ success, errors: errors.array() });
   }
   try {
     // Check whether the user with this email exists already
     let user = await User.findOne({ email: req.body.email });
     if (user) {
-      return res.status(400).json({success, error: "Sorry a user with this email already exists" })
+      return res.status(400).json({ success, error: "Sorry a user with this email already exists" })
     }
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(req.body.password, salt);
@@ -46,7 +46,7 @@ router.post('/createuser', [
 
     // res.json(user)
     success = true;
-    res.json({success, authtoken })
+    res.json({ success, authtoken })
 
   } catch (error) {
     console.error(error.message);
@@ -87,6 +87,7 @@ router.post('/login', [
       }
     }
     const authtoken = jwt.sign(data, JWT_SECRET);
+    console.log('authtoken', authtoken);
     success = true;
     res.json({ success, authtoken })
 
@@ -100,10 +101,10 @@ router.post('/login', [
 
 
 // ROUTE 3: Get Existing User Details using: POST "/api/auth/getuser". Login required
-router.post('/getuser', fetchUser,  async (req, res) => {
+router.post('/getuser', fetchUser, async (req, res) => {
 
   try {
-   let userId = req.user.id;
+    let userId = req.user.id;
     const user = await User.findById(userId).select("-password")
     res.send(user)
   } catch (error) {

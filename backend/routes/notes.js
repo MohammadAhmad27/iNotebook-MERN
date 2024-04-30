@@ -7,7 +7,7 @@ const { body, validationResult } = require('express-validator');
 // ROUTE 1: Get All Notes of Valid User using: GET "/api/notes/getuser". Login required
 router.get('/fetchallnotes', fetchUser, async (req, res) => {
     try {
-       // user: req.user.id (It means specific notes will only be shown to the owner of that note)
+        // user: req.user.id (It means specific notes will only be shown to the owner of that note)
         const notes = await Note.find({ user: req.user.id });
         res.json(notes)
     } catch (error) {
@@ -21,7 +21,7 @@ router.post('/addnote', fetchUser, [
     body('title', 'Enter a valid title').isLength({ min: 5 }),
     body('description', 'Description must be atleast 5 characters').isLength({ min: 5 }),], async (req, res) => {
         try {
-            const { title, description} = req.body;
+            const { title, description } = req.body;
 
             // If there are errors, return Bad request and the errors
             const errors = validationResult(req);
@@ -43,7 +43,7 @@ router.post('/addnote', fetchUser, [
 
 // ROUTE 3: Update an Existing Note using: PUT "/api/notes/updatenote". Login required
 router.put('/updatenote/:id', fetchUser, async (req, res) => {
-    const { title, description} = req.body;
+    const { title, description } = req.body;
     try {
         // Create a newNote object
         const newNote = {};
