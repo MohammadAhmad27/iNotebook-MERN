@@ -34,7 +34,7 @@ const Signup = (props) => {
   }
 
   return (
-    <did className='container mt-2'>
+    <div className='container mt-2'>
       <h2>Create an Account to use iNotebook</h2>
       <form onSubmit={handleSubmit}>
         <div className="my-3">
@@ -56,7 +56,7 @@ const Signup = (props) => {
 
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
-    </did>
+    </div>
   )
 }
 
