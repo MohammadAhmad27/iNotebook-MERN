@@ -21,7 +21,7 @@ const Login = (props) => {
             localStorage.setItem('token', json.authtoken);
             props.showAlert("Logged in Successfully!", "success");
             navigate("/"); // Use navigate function instead of history.push
-           
+
         }
         else {
             props.showAlert("Invalid Details!", "danger");

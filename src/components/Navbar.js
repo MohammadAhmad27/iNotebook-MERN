@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useLocation, useNavigate  } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 
@@ -8,7 +8,7 @@ const Navbar = (props) => {
     const handleLogout = () => {
         localStorage.removeItem('token');
         props.showAlert("Logged out Successfully!", "success");
-       navigate("/login");
+        navigate("/login");
     }
     let location = useLocation();
 
@@ -36,7 +36,7 @@ const Navbar = (props) => {
                 </div>
             </div>
         </nav>
-    ) 
+    )
 }
 
 export default Navbar
