@@ -5,12 +5,12 @@ const AddNote = (props) => {
     const context = useContext(noteContext);
     const { addNote } = context;
 
-    const [note, setNote] = useState({ title: "", description: "", tag: "" })
+    const [note, setNote] = useState({ title: "", description: ""})
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addNote(note.title, note.description, note.tag);
-        setNote({ title: "", description: "", tag: "" });
+        addNote(note.title, note.description);
+        setNote({ title: "", description: ""});
         props.showAlert(" Note Added Successfully!", "success");
     }
 
