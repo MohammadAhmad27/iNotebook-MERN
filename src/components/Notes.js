@@ -9,6 +9,7 @@ const Notes = (props) => {
     const navigate = useNavigate();
     const { notes, getNotes, editNote } = context;
     useEffect(() => {
+        //If user is not loggedIn he won't redirect to home page
         if (localStorage.getItem('token')) {
             getNotes()
         }
