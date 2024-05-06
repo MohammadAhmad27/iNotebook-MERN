@@ -16,9 +16,9 @@ const NoteState = (props) => {
         "auth-token": localStorage.getItem('token')
       }
     });
-    const json = await response.json()
+    const json = await response.json();
     console.log("All Notes", json);
-    setNotes(json)
+    setNotes(json);
   }
 
   // Add a Note
@@ -36,7 +36,7 @@ const NoteState = (props) => {
 
     const note = await response.json();
     console.log("New Note", note);
-    setNotes(notes.concat(note))
+    setNotes(notes.concat(note));
   }
 
   // Delete a Note
@@ -51,8 +51,8 @@ const NoteState = (props) => {
     });
     const json = response.json();
     console.log("Deleted Note", json);
-    const newNotes = notes.filter((note) => { return note._id !== id })
-    setNotes(newNotes)
+    const newNotes = notes.filter((note) => { return note._id !== id });
+    setNotes(newNotes);
   }
 
   // Edit a Note
@@ -68,7 +68,7 @@ const NoteState = (props) => {
     });
     const json = await response.json();
     console.log("Edited Note", json);
-    let newNotes = JSON.parse(JSON.stringify(notes))
+    let newNotes = JSON.parse(JSON.stringify(notes));
     // Logic to edit in client
     for (let index = 0; index < newNotes.length; index++) {
       const element = newNotes[index];
