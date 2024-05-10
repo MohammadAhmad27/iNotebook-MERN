@@ -67,7 +67,7 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description })
     });
     const json = await response.json();
-    console.log("Edited Note", json);
+    console.log("Updated Note", json);
     let newNotes = JSON.parse(JSON.stringify(notes));
     // Logic to edit in client
     for (let index = 0; index < newNotes.length; index++) {
@@ -79,6 +79,7 @@ const NoteState = (props) => {
       }
     }
     setNotes(newNotes);
+    console.log("After Updation (All Notes)!", newNotes);
   }
 
   return (
