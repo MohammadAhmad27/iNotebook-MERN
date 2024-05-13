@@ -4,7 +4,7 @@ import Noteitem from './Noteitem';
 import AddNote from './AddNote';
 import { useNavigate } from 'react-router-dom';
 
-const Notes = (props) => {
+const Notes = ({ showAlert }) => {
     const context = useContext(noteContext);
     const navigate = useNavigate();
     const { notes, getNotes, editNote } = context;
@@ -31,7 +31,7 @@ const Notes = (props) => {
     const handleClick = (e) => {
         editNote(note.id, note.etitle, note.edescription)
         refClose.current.click();
-        props.showAlert(" Note Updated Successfully!", "success");
+        showAlert(" Note Updated Successfully!", "success");
     }
 
     const onChange = (e) => {
@@ -40,7 +40,7 @@ const Notes = (props) => {
 
     return (
         <>
-            <AddNote showAlert={props.showAlert} />
+            <AddNote showAlert={showAlert} />
             <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button>
@@ -79,9 +79,9 @@ const Notes = (props) => {
                 </div>
                 {notes.map((note) => {
                     return (
-                     <Noteitem key={note._id} showAlert={props.showAlert} updateNote={updateNote} note={note} />
+                        <Noteitem key={note._id} showAlert={showAlert} updateNote={updateNote} note={note} />
                     )
-                    })}
+                })}
             </div>
         </>
     )

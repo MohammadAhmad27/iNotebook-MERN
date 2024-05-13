@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Alert(props) {
+function Alert({ alert }) {
     const capitlize = (word) => {
         if (word === "danger") {
             word = "error";
@@ -10,8 +10,8 @@ function Alert(props) {
     }
     return (
         <div style={{ height: '50px' }}>
-            {props.alert && <div className={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">
-                <strong>{capitlize(props.alert.type)}</strong>: {props.alert.msg}
+            {alert && <div className={`alert alert-${alert.type} alert-dismissible fade show`} role="alert">
+                <strong>{capitlize(alert.type)}</strong>: {alert.msg}
             </div>}
         </div>
     )
