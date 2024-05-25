@@ -1,7 +1,7 @@
 import NoteContext from "./noteContext";
 import { useState } from "react";
 
-const NoteState = (props) => {
+const NoteState = ({ children }) => {
   const host = "http://localhost:5000"
   const notesInitial = []
   const [notes, setNotes] = useState(notesInitial)
@@ -23,7 +23,7 @@ const NoteState = (props) => {
 
   // Add a Note
   const addNote = async (title, description) => {
-   
+
     // API Call 
     const response = await fetch(`${host}/api/notes/addnote`, {
       method: 'POST',
@@ -84,7 +84,7 @@ const NoteState = (props) => {
 
   return (
     <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes }}>
-      {props.children}
+      {children}
     </NoteContext.Provider>
   )
 
